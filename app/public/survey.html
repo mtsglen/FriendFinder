@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Friend Finder</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <section class="container" id="body">
+            <section class="container" id="header">
+                <h2>Friend Finder Survey</h2>
+                <p>From the dropdown under each statement select how much you agree with the statement.  Your possible answers are numeric from one to five, with one indicating strongly disagree, three indicating neutral, and five indicating strongly agree.  Have fun and get matching!</p>
+            </section>
+            <hr>
+            <section class="container" id="inputs">
+               <h2>About You</h2>
+               <br>
+               <h4>Name (Required)</h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <br>
+                <h4>Link to Photo Image (Required)</h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+            </section>
+            <hr>
+            <section class="container" id="quiz">
+                <section class= "questions">
+                    <h4>Question 1</h4>
+                    <p>I want to be famous.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 2</h4>
+                    <p>I often feel grateful for all I have in life.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 3</h4>
+                    <p>I feel like I have made many accomplishments in life.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 4</h4>
+                    <p>I would prefer a few close friends to many aquaintences.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 5</h4>
+                    <p>I prefer to be serious over joking around.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 6</h4>
+                    <p>I enjoy taking opportunities to better myself.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 7</h4>
+                    <p>I enjoy striking conversation with random people.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 8</h4>
+                    <p>I prefer to play it safe rather than take risks.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 9</h4>
+                    <p>I prefer to be alone rather than around people.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+                <br>
+                <section class= "questions">
+                    <h4>Question 10</h4>
+                    <p>Every day is full of new opportunities.</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select an Option
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >1 Strongly Disagree </a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3 Neutral</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5 Strongly Agree</a>
+                        </div>
+                </section>
+            </section>
+            <br>
+            <section class="container">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </section>
+        </section>
+    </body>
+</html>

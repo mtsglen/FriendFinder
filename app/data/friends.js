@@ -1,0 +1,4 @@
+let existingUsers = [];
+
+let incomingUser = {};
+
