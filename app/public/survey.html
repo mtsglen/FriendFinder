@@ -33,7 +33,7 @@
                     <h4>Question 1</h4>
                     <p>I want to be famous.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q1">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -48,7 +48,7 @@
                     <h4>Question 2</h4>
                     <p>I often feel grateful for all I have in life.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q2">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -63,7 +63,7 @@
                     <h4>Question 3</h4>
                     <p>I feel like I have made many accomplishments in life.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q3">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -78,7 +78,7 @@
                     <h4>Question 4</h4>
                     <p>I would prefer a few close friends to many aquaintences.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q4">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -93,7 +93,7 @@
                     <h4>Question 5</h4>
                     <p>I prefer to be serious over joking around.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q5">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -108,7 +108,7 @@
                     <h4>Question 6</h4>
                     <p>I enjoy taking opportunities to better myself.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q6">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -123,7 +123,7 @@
                     <h4>Question 7</h4>
                     <p>I enjoy striking conversation with random people.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q7">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -138,7 +138,7 @@
                     <h4>Question 8</h4>
                     <p>I prefer to play it safe rather than take risks.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q8">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -153,7 +153,7 @@
                     <h4>Question 9</h4>
                     <p>I prefer to be alone rather than around people.</p>
                     <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="q9">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -167,8 +167,8 @@
                 <section class= "questions">
                     <h4>Question 10</h4>
                     <p>Every day is full of new opportunities.</p>
-                    <div class="input-group mb-3 dropdownMenuButton">
-                        <select class="custom-select" id="inputGroupSelect01">
+                    <div class="input-group mb-3 dropdownMenuButton" >
+                        <select class="custom-select" id="q10">
                           <option selected>Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
@@ -183,7 +183,63 @@
             <section class="container">
                 <button type="button" class="btn btn-primary btn-lg btn-block" id="subButton">Submit</button>
             </section>
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title">Great!! Your match is...</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p id="friendname"></p>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </section>
-        <script type="text/javascript" src="../data/friends.js"></script>
+        <!-- <script type="text/javascript" src="../data/friends.js"></script> -->
+        <script type="text/javascript">
+            let bestFriend = require('../routing/apiRoutes.js');
+            $("#subButton").on("click", function() {
+                //query selector all via node list to itterate all inputs by class
+                let answers = [($('#q1').val()), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()];
+                let newUser = {
+                    name: $('#name').val().trim(),
+                    picture: $('#picture').val().trim(),
+                    answers: answers 
+                }
+                console.log(newUser);
+                $.ajax({
+                    method: "POST",
+                    url: "/api/friends",
+                    data: newUser,
+                    type: 'application/json',
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+                console.log(bestFriend);
+
+                $.get("/api/friends", function() {
+                    var friendPic = $("<img>").attr({src:bestFriend.photo});
+                    $("#friendname").text(bestFriend.name);
+                    $(".modal-body").append(friendPic);
+                    $('#myModal').modal('show');  
+                });
+                
+            });
+            function reset() {
+                $("#name").empty();
+                $('#picture').empty();
+                // $('.custom-select')
+            }
+
+        </script>
     </body>
 </html>

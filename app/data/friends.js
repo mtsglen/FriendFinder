@@ -1,26 +1,18 @@
-let existingUsers = [];
+let existingUsers = [
+  {
+    "name":"Ahmed",
+    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "scores":[
+      5, 1, 4, 4, 5, 1, 2, 5, 4, 1
+      ]
+  },
+  {
+    "name":"John",
+    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "scores":[
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+      ]
+  },
+];
 
-let incomingUser = {};
-
-$("#subButton").on("click", function() {
-  event.preventDefault();
-  console.log("one");
-  let questions = $('.dropdownMenuButton');
-  let answers = [];
-  console.log("two");
-  for (var i=0; i<questions.length; i++) {
-    let values = dropdown-menu.val();
-    answers.push(values);
-    
-  }
-  console.log("three");
-  
-  incomingUser = {
-    name: $('#name').val().trim(),
-    picture: $('#picture').val().trim(),
-    answers: answers
-  };
-  console.log(incomingUser);
-});
-
-console.log(incomingUser);
+module.exports = existingUsers;
