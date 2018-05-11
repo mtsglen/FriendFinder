@@ -9,7 +9,7 @@
     </head>
     <body>
         <section class="container" id="body">
-            <section class="container" id="header">
+            <section class="container" id="header">  
                 <h2>Friend Finder Survey</h2>
                 <p>From the dropdown under each statement select how much you agree with the statement.  Your possible answers are numeric from one to five, with one indicating strongly disagree, three indicating neutral, and five indicating strongly agree.  Have fun and get matching!</p>
             </section>
@@ -169,7 +169,7 @@
                     <p>Every day is full of new opportunities.</p>
                     <div class="input-group mb-3 dropdownMenuButton" >
                         <select class="custom-select" id="q10">
-                          <option selected>Select an Option</option>
+                          <option selected value="Select an Option">Select an Option</option>
                           <option value="1" >1 Strongly Disagree </option>
                           <option value="2" >2</option>
                           <option value="3" >3 Neutral</option>
@@ -183,19 +183,18 @@
             <section class="container">
                 <button type="button" class="btn btn-primary btn-lg btn-block" id="subButton">Submit</button>
             </section>
-            <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal" tabindex="-1" role="dialog" id="bestFriendModal">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h3 class="modal-title">Great!! Your match is...</h3>
+                      <h3 class="modal-title"></h3>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
                       <p id="friendname"></p>
-                      
-                    </div>
+                      <img id='friendPic'>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
@@ -204,41 +203,67 @@
               </div>
         </section>
         <!-- <script type="text/javascript" src="../data/friends.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"                     integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <script type="text/javascript">
-            let bestFriend = require('../routing/apiRoutes.js');
+            
             $("#subButton").on("click", function() {
-                //query selector all via node list to itterate all inputs by class
-                let answers = [($('#q1').val()), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()];
-                let newUser = {
-                    name: $('#name').val().trim(),
-                    picture: $('#picture').val().trim(),
-                    answers: answers 
-                }
-                console.log(newUser);
-                $.ajax({
-                    method: "POST",
-                    url: "/api/friends",
-                    data: newUser,
-                    type: 'application/json',
-                    success: function(response) {
-                        console.log(response);
+                event.preventDefault();
+                function validation() {
+                    let validated = true;
+                    $(".form-control").each(function() {
+                    if ($(this).val() === "") {
+                        validated = false;
                     }
-                });
-                console.log(bestFriend);
+                    });
+                    $(".custom-select").each(function() {
+                    if ($(this).val() === "") {
+                        validated = false;
+                    }
+                    });
+                    return validated;
+                }
 
-                $.get("/api/friends", function() {
-                    var friendPic = $("<img>").attr({src:bestFriend.photo});
-                    $("#friendname").text(bestFriend.name);
-                    $(".modal-body").append(friendPic);
-                    $('#myModal').modal('show');  
-                });
+                if (validation()) {
+                    let answers = [($('#q1').val()), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()];
+                    let newUser = {
+                        name: $('#name').val().trim(),
+                        picture: $('#picture').val().trim(),
+                        scores: answers 
+                    }
+                    // console.log(newUser);
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/friends",
+                        data: newUser,
+                        type: 'application/json',
+                        success: function(response) {
+                            console.log(response);
+                            var friendPic = response.bestFriend.photo;
+                            $('.modal-title').text('Great!! Your match is...')
+                            $("#friendname").text(response.bestFriend.name);
+                            $("#friendPic").attr("src", response.bestFriend.photo);
+                            // $('#friendPic').html('<img src="' + response.bestFriend.photo + '">')
+                            $('#bestFriendModal').modal('toggle');
+                            console.log('<img src="' + response.bestFriend.photo + '">');
+                            
+                        }
+                    });
+                } else {
+                    $('.modal-title').text("Hmmm....there was an error");
+                    $(".modal-body").text("Please fill out all fields before submitting.");
+                    $('#bestFriendModal').modal('show');
+                }
+
+                reset();
                 
             });
             function reset() {
-                $("#name").empty();
-                $('#picture').empty();
-                // $('.custom-select')
-            }
+                $("#name").val('');
+                $('#picture').val('');
+                $("select").each(function() { 
+                    this.selectedIndex = 0 });
+                };
 
         </script>
     </body>

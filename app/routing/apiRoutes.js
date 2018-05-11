@@ -7,29 +7,33 @@ module.exports = function (app) {
   
 
   app.post('/api/friends', function(req, res) {
-    console.log(req.body);
-    console.log(friends);
+    // console.log(req.body);
+    // console.log(friends);
     var newUser = req.body;
+    console.log(newUser);
+    
   
     var currentScore;
     var userindex = 0;
-    var newdiff = 0;
+    var totaldiff = 0;
     var diffAmount = 0;
 
     for (var i = 0; i < friends.length; i++) {
       var existing = friends[i].scores;
       diffAmount = 0;
-      newdiff = 0;
-      for (var k = 0; k < newUser.answers.length; k++) {
-        diffAmount = Math.abs(parseInt(existing[k]) - parseInt(newUser.answers[k]));
-        newdiff += diffAmount
+      totaldiff = 0;
+      for (var k = 0; k < newUser.scores.length; k++) {
+        // console.log(newUser);
+        // console.log(existing[k]);
+        diffAmount = Math.abs(parseInt(existing[k]) - parseInt(newUser.scores[k]));
+        totaldiff += diffAmount
       }
-      if (i == 0) {
-        currentScore = newdiff
+      if (i === 0) {
+        currentScore = totaldiff
         // console.log("0 ");
         
-      } else if (newdiff < currentScore) {
-        currentScore = newdiff;
+      } else if (totaldiff < currentScore) {
+        currentScore = totaldiff;
         userindex = i;
         // console.log("User index" + i);
         
@@ -41,8 +45,8 @@ module.exports = function (app) {
     // console.log(friends);
     
     var bestFriend = friends[userindex];
-    // console.log(bestFriend);
-    res.json({ bestFriend: bestFriend});
+    console.log(bestFriend);
+    res.json({ bestFriend });
     // console.log(friends);
     // console.log(incoming);
     
