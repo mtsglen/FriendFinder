@@ -194,11 +194,10 @@
                     </div>
                     <div class="modal-body">
                       <p id="friendname"></p>
-                      <img class="modal-content" id='friendPic' src=""/>
+                    </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                  </div>
                 </div>
               </div>
         </section>
@@ -241,12 +240,19 @@
                             console.log(response);
                             var friendPic = response.bestFriend.picture;
                             $('.modal-title').text('Great!! Your match is...');
-                            $('.modal.body').empty();
+                            $('.modal-body').remove('img');
+                            
+                            var $image = $('<img class="modal-content" id="friendPic" src="' + friendPic + '" alt="best friend picture"/>');
+
+                            $('.modal-body').append($image);
+                            // $('#picture').append($image);
+
                             $("#friendname").text(response.bestFriend.name);
-                            $("#friendPic").attr("src", friendPic);
+                            // $("#friendPic").attr("src", friendPic);
+                            
                             // $('.modal-body').html('<img src="' + response.bestFriend.picture + '"/>')
                             $('#bestFriendModal').modal('show');
-                            console.log('<img src="' + response.bestFriend.picture + '">');
+                            console.log($image);
                             
                         }
                     });
