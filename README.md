@@ -4,7 +4,7 @@ This project was designed to match a person to an existing user by closest match
 
 ## Build Status
 
-This build is 98% complete.  Some tags are broken and still under construction.
+This build is complete.
 
 ## Code style
 This product is built using javascript, node, and express.
