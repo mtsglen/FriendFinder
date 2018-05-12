@@ -194,7 +194,7 @@
                     </div>
                     <div class="modal-body">
                       <p id="friendname"></p>
-                      <img id='friendPic'>
+                      <img class="modal-content" id='friendPic' src=""/>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
@@ -239,13 +239,14 @@
                         type: 'application/json',
                         success: function(response) {
                             console.log(response);
-                            var friendPic = response.bestFriend.photo;
-                            $('.modal-title').text('Great!! Your match is...')
+                            var friendPic = response.bestFriend.picture;
+                            $('.modal-title').text('Great!! Your match is...');
+                            $('.modal.body').empty();
                             $("#friendname").text(response.bestFriend.name);
-                            $("#friendPic").attr("src", response.bestFriend.photo);
-                            // $('#friendPic').html('<img src="' + response.bestFriend.photo + '">')
-                            $('#bestFriendModal').modal('toggle');
-                            console.log('<img src="' + response.bestFriend.photo + '">');
+                            $("#friendPic").attr("src", friendPic);
+                            // $('.modal-body').html('<img src="' + response.bestFriend.picture + '"/>')
+                            $('#bestFriendModal').modal('show');
+                            console.log('<img src="' + response.bestFriend.picture + '">');
                             
                         }
                     });
